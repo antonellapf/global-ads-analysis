@@ -20,7 +20,32 @@ I am focusing on five key business questions:
 Columns:
 Date, Platform, Campaign Type, Industry, Country, Impressions, Clicks, CTR, CPC, Ad Spend, Conversions, CPA, Revenue, ROAS
 
-### Duplicate Records
+```sql
+#checking if there is any null value on my dataset
+SELECT
+  COUNTIF(date IS NULL) AS null_date,
+  COUNTIF(platform IS NULL) AS null_platform,
+  COUNTIF(campaign_type IS NULL) AS null_campaign_type,
+  COUNTIF(industry IS NULL) AS null_industry,
+  COUNTIF(country IS NULL) AS null_country,
+
+  COUNTIF(impressions IS NULL) AS null_impressions,
+  COUNTIF(clicks IS NULL) AS null_clicks,
+  COUNTIF(CTR IS NULL) AS null_ctr,
+  COUNTIF(CPC IS NULL) AS null_cpc,
+  COUNTIF(ad_spend IS NULL) AS null_ad_spend,
+
+  COUNTIF(conversions IS NULL) AS null_conversions,
+  COUNTIF(CPA IS NULL) AS null_cpa,
+  COUNTIF(revenue IS NULL) AS null_revenue,
+  COUNTIF(ROAS IS NULL) AS null_roas
+
+FROM `global-ads-analysis.marketing_analytics.raw_campaign_data`;
+```
+### Findings
+No missing values were identified across any of the dataset columns. As a result, no imputation or data cleansing was required prior to analysis.
+
+### Duplicate Records Check
 ```sql
 SELECT
   date,
@@ -39,5 +64,13 @@ GROUP BY
 HAVING COUNT(*) > 1
 ORDER BY rows_found DESC;
 ```
+### Data Quality Conclusion
+
+The dataset passed all initial quality checks.
+- No missing values were identified.
+- No fully duplicated records were identified.
+- Data types were successfully imported and validated.
+
+The dataset is suitable for further exploratory and business analysis.
 
 
