@@ -21,7 +21,7 @@ Columns:
 Date, Platform, Campaign Type, Industry, Country, Impressions, Clicks, CTR, CPC, Ad Spend, Conversions, CPA, Revenue, ROAS
 
 ```sql
-#checking if there is any null value on my dataset
+-- Check for missing values across all columns
 SELECT
   COUNTIF(date IS NULL) AS null_date,
   COUNTIF(platform IS NULL) AS null_platform,
@@ -47,6 +47,7 @@ No missing values were identified across any of the dataset columns. As a result
 
 ### Duplicate Records Check
 ```sql
+-- Data quality validation: null value assessment
 SELECT
   date,
   platform,
