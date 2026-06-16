@@ -19,3 +19,25 @@ I am focusing on five key business questions:
 ## Exploring the Data
 Columns:
 Date, Platform, Campaign Type, Industry, Country, Impressions, Clicks, CTR, CPC, Ad Spend, Conversions, CPA, Revenue, ROAS
+
+### Duplicate Records
+```sql
+SELECT
+  date,
+  platform,
+  campaign_type,
+  industry,
+  country,
+  COUNT(*) AS rows_found
+FROM `global-ads-analysis.marketing_analytics.raw_campaign_data`
+GROUP BY
+  date,
+  platform,
+  campaign_type,
+  industry,
+  country
+HAVING COUNT(*) > 1
+ORDER BY rows_found DESC;
+```
+
+
